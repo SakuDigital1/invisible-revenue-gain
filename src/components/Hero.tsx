@@ -18,14 +18,13 @@ const Hero = () => {
           <div className="space-y-8 animate-fade-in-up">
             <div className="space-y-6">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-                How Much{' '}
-                <span className="text-pml-coral">Invisible Revenue</span>{' '}
-                Are You Losing Each Month?
+                Your Ads Are Working Better Than{' '}
+                <span className="text-pml-coral">You Think</span>
               </h1>
               
               <p className="text-lg md:text-xl text-foreground/80 max-w-2xl">
-                Most brands under‑report 15–30% of conversions due to GA4/iOS/CAPI gaps. 
-                Plug in your numbers to see the dollar value — instantly.
+                <strong>15-30% of your conversions</strong> are invisible to GA4. 
+                <br />Find yours in 60 seconds.
               </p>
             </div>
 
@@ -36,7 +35,7 @@ const Hero = () => {
                 onClick={scrollToCalculator}
                 className="group"
               >
-                Calculate My Loss
+                See My Numbers
                 <ChevronDown className="ml-2 h-5 w-5 group-hover:animate-bounce" />
               </Button>
               
@@ -69,7 +68,7 @@ const Hero = () => {
 
                 <div className="pt-4 border-t border-border/20">
                   <div className="text-center space-y-2">
-                    <p className="text-foreground/60 text-sm">Estimated Invisible Revenue</p>
+                    <p className="text-foreground/60 text-sm">Hidden Conversions Value</p>
                     <p className="text-3xl font-numeric font-bold text-pml-coral">
                       $8,400<span className="text-lg">/month</span>
                     </p>

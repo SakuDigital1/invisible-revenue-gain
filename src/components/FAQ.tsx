@@ -25,7 +25,7 @@ const FAQ = () => {
     },
     {
       question: "What does the 14‑day protocol include?",
-      answer: "The Invisible ROAS Recovery Protocol is a step-by-step implementation guide covering: server-side event setup, deduplication configuration, conversion modeling optimization, cross-domain tracking fixes, and measurement validation. Most brands see 60-90% gap closure within 14 days."
+      answer: "The Hidden Conversions Recovery Protocol is a step-by-step implementation guide covering: server-side event setup, deduplication configuration, conversion modeling optimization, cross-domain tracking fixes, and measurement validation. Most brands see 60-90% gap closure within 14 days."
     }
   ];
 
@@ -39,7 +39,7 @@ const FAQ = () => {
               Frequently Asked Questions
             </h2>
             <p className="text-lg text-foreground/80">
-              Everything you need to know about attribution revenue recovery
+              Everything you need to know about hidden conversion recovery
             </p>
           </div>
 

@@ -49,7 +49,7 @@ const Proof = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
               Brands at $50K/mo typically recover{' '}
               <span className="text-pml-mint">$8–$12K</span>{' '}
-              in previously untracked conversions
+              in hidden conversions each month
             </h2>
           </div>
 

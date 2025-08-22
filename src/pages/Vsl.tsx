@@ -74,7 +74,7 @@ const Vsl = () => {
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-foreground/80 text-sm mb-1">Your Invisible Revenue Loss</p>
+                      <p className="text-foreground/80 text-sm mb-1">Your Hidden Conversions</p>
                       <p className="text-2xl font-numeric font-bold text-pml-coral">
                         {formatCurrency(calculatorResults.invisibleRevenue)}/month
                       </p>
@@ -176,7 +176,7 @@ const Vsl = () => {
                 {/* Social proof note */}
                 <div className="text-center pt-4 border-t border-border/20">
                   <p className="text-xs text-foreground/60">
-                    Join 200+ brands who've recovered their invisible revenue
+                    Join 200+ brands who've recovered their hidden conversions
                   </p>
                 </div>
               </CardContent>

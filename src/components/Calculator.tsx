@@ -120,10 +120,10 @@ const Calculator = ({ onEmailGateOpen }: CalculatorProps) => {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Attribution Revenue Loss Calculator
+              Hidden Conversion Calculator
             </h2>
             <p className="text-lg text-foreground/80 max-w-2xl mx-auto">
-              Get your personalized loss estimate in 60 seconds
+              <strong>200+ audits.</strong> <strong>$50M+ analyzed.</strong> Your numbers in 60 seconds.
             </p>
           </div>
 
@@ -137,7 +137,7 @@ const Calculator = ({ onEmailGateOpen }: CalculatorProps) => {
                     <CardHeader className="px-0 pt-0">
                       <CardTitle className="text-xl">Your Current Setup</CardTitle>
                       <CardDescription>
-                        Input your advertising data to calculate invisible revenue loss
+                        Find the conversions hiding in your data
                       </CardDescription>
                     </CardHeader>
                   </div>
@@ -311,9 +311,9 @@ const Calculator = ({ onEmailGateOpen }: CalculatorProps) => {
                 <div className="space-y-8">
                   <div>
                     <CardHeader className="px-0 pt-0">
-                      <CardTitle className="text-xl">Your Revenue Loss</CardTitle>
+                      <CardTitle className="text-xl">Your Hidden Conversions</CardTitle>
                       <CardDescription>
-                        Real-time calculation based on industry benchmarks
+                        Live calculation from 200+ tracking audits
                       </CardDescription>
                     </CardHeader>
                   </div>
@@ -327,7 +327,7 @@ const Calculator = ({ onEmailGateOpen }: CalculatorProps) => {
                         className="w-8 h-8 opacity-60"
                       />
                     </div>
-                    <p className="text-foreground/80 text-sm mb-2">Estimated Invisible Revenue</p>
+                    <p className="text-foreground/80 text-sm mb-2">Hidden Conversions Value</p>
                     <p className="text-4xl md:text-5xl font-numeric font-bold text-pml-coral animate-count-up">
                       {formatCurrency(animatedRevenue)}
                       <span className="text-xl">/month</span>
@@ -370,7 +370,7 @@ const Calculator = ({ onEmailGateOpen }: CalculatorProps) => {
                       size="lg"
                     >
                       <Mail className="mr-2 h-4 w-4" />
-                      Email me the full benchmark breakdown
+                      Get My Full Report
                     </Button>
                     
                     <Button
@@ -380,7 +380,7 @@ const Calculator = ({ onEmailGateOpen }: CalculatorProps) => {
                       className="w-full"
                     >
                       <Calendar className="mr-2 h-4 w-4" />
-                      Book a 15‑min Tracking Clarity Audit
+                      Book My Audit
                     </Button>
 
                     <Button

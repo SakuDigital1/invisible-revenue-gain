@@ -4,18 +4,18 @@ const HowItWorks = () => {
   const steps = [
     {
       icon: Calculator,
-      title: "Estimate your invisible revenue loss",
-      description: "Input your ad spend, channel mix, and tracking setup to get an instant estimate based on 200+ attribution audits."
+      title: "Find your hidden conversions",
+      description: "60-second calculator reveals the conversions GA4 can't see. Based on 200+ real audits."
     },
     {
       icon: Mail,
-      title: "Get your peer‑benchmark report by email", 
-      description: "Receive detailed platform breakdowns, industry comparisons, and your personalized recovery potential."
+      title: "Get your benchmark report", 
+      description: "Platform breakdowns. Industry comparisons. Recovery roadmap. Delivered instantly."
     },
     {
       icon: Wrench,
-      title: "Fix it in 14 days with the Invisible ROAS Recovery Protocol",
-      description: "Follow our step-by-step protocol to plug attribution gaps and recover 60-90% of your invisible revenue."
+      title: "Recover your hidden conversions in 14 days",
+      description: "Step-by-step protocol. Plug the gaps. Recover 60-90% of missing conversions."
     }
   ];
 
@@ -27,7 +27,7 @@ const HowItWorks = () => {
             How It Works
           </h2>
           <p className="text-lg text-foreground/80 max-w-2xl mx-auto">
-            Three simple steps to identify and recover your invisible revenue
+            Find and recover your hidden conversions in 3 steps
           </p>
         </div>
 

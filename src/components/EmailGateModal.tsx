@@ -121,10 +121,10 @@ const EmailGateModal = ({ isOpen, onClose, results, inputs }: EmailGateModalProp
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <FileText className="h-5 w-5 text-pml-mint" />
-            Get Your Full 2025 Attribution Benchmark Report
+            Get Your Hidden Conversion Report
           </DialogTitle>
           <DialogDescription>
-            We'll send platform breakdowns, peer averages, and a 14‑day recovery plan.
+            Platform breakdowns, peer benchmarks, and your 14‑day recovery plan.
           </DialogDescription>
         </DialogHeader>
 
