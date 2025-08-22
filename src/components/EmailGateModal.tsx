@@ -23,6 +23,7 @@ const EmailGateModal = ({ isOpen, onClose, results, inputs }: EmailGateModalProp
     name: '',
     email: '',
     consent: false,
+    zapierWebhook: '',
   });
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
@@ -58,6 +59,7 @@ const EmailGateModal = ({ isOpen, onClose, results, inputs }: EmailGateModalProp
         consent: formData.consent,
         calculatorInputs: inputs,
         calculatorResults: results,
+        zapierWebhook: formData.zapierWebhook,
       });
 
       if (result.success) {
@@ -155,6 +157,24 @@ const EmailGateModal = ({ isOpen, onClose, results, inputs }: EmailGateModalProp
               disabled={isLoading}
               required
             />
+          </div>
+
+          {/* Zapier Webhook Input */}
+          <div className="space-y-2">
+            <Label htmlFor="zapierWebhook">
+              Zapier Webhook URL <span className="text-muted-foreground">(optional)</span>
+            </Label>
+            <Input
+              id="zapierWebhook"
+              type="url"
+              value={formData.zapierWebhook}
+              onChange={(e) => handleInputChange('zapierWebhook', e.target.value)}
+              placeholder="https://hooks.zapier.com/hooks/catch/123456/abcdef"
+              disabled={isLoading}
+            />
+            <p className="text-xs text-muted-foreground">
+              Connect your own Zapier webhook to receive lead data in your preferred format
+            </p>
           </div>
 
           {/* Consent Checkbox */}

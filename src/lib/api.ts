@@ -10,6 +10,7 @@ export interface LeadData {
   consent: boolean;
   calculatorInputs: CalculatorInputs;
   calculatorResults: CalculatorResults;
+  zapierWebhook?: string;
 }
 
 export interface BeehiivSubscriber {
@@ -105,8 +106,8 @@ export async function addBeehiivSubscriber(leadData: LeadData): Promise<boolean>
 }
 
 // Send data to Zapier webhook
-export async function sendZapierWebhook(leadData: LeadData): Promise<boolean> {
-  const webhookUrl = import.meta.env.VITE_ZAPIER_WEBHOOK_URL;
+export async function sendZapierWebhook(leadData: LeadData, customWebhookUrl?: string): Promise<boolean> {
+  const webhookUrl = customWebhookUrl || leadData.zapierWebhook || import.meta.env.VITE_ZAPIER_WEBHOOK_URL;
 
   if (!webhookUrl) {
     console.warn('Zapier webhook URL not configured');
@@ -176,7 +177,7 @@ export async function submitLead(leadData: LeadData): Promise<{ success: boolean
       console.error('Beehiiv error:', error);
       return false;
     }),
-    sendZapierWebhook(leadData).catch(error => {
+    sendZapierWebhook(leadData, leadData.zapierWebhook).catch(error => {
       errors.push('Failed to process lead data');
       console.error('Zapier error:', error);
       return false;
