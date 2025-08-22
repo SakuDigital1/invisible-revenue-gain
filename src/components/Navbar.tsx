@@ -3,8 +3,8 @@ import { trackBookCallClicked } from "@/lib/analytics";
 
 const Navbar = () => {
   const handleBookAudit = () => {
-    trackBookCallClicked('hero');
-    const calendlyUrl = import.meta.env.VITE_CALENDLY_URL || 'https://calendly.com/paidmedialab/audit';
+    trackBookCallClicked('navbar');
+    const calendlyUrl = 'https://calendly.com/saku-paidmedialab/pm-lab-tracking-clarity-call';
     window.open(calendlyUrl, '_blank');
   };
 
@@ -20,10 +20,12 @@ const Navbar = () => {
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-cream rounded-lg flex items-center justify-center">
-              <span className="text-pml-forest font-bold text-sm">PML</span>
-            </div>
+          <div className="flex items-center space-x-3">
+            <img 
+              src="/pml-logo.png" 
+              alt="Paid Media Lab Logo" 
+              className="w-8 h-8"
+            />
             <span className="text-foreground font-semibold text-lg">
               Paid Media Lab
             </span>

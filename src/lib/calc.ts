@@ -12,8 +12,13 @@ export const MATCH_BY_SETUP = {
 export const PEER_BY_INDUSTRY = {
   ecommerce: 0.72,
   saas: 0.78,
-  agency: 0.70,
   igaming: 0.65,
+  agency: 0.70,
+  leadgen: 0.69,
+  dtc: 0.74,
+  finance: 0.76,
+  health: 0.73,
+  education: 0.75,
   other: 0.71,
 } as const;
 

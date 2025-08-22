@@ -159,7 +159,7 @@ export function trackLeadSubmitted(data: {
 }
 
 // Track book call clicked
-export function trackBookCallClicked(source: 'calculator' | 'vsl' | 'hero'): void {
+export function trackBookCallClicked(source: 'calculator' | 'vsl' | 'hero' | 'navbar' | 'fix-tracking'): void {
   const event = {
     event: 'book_call_clicked',
     source,

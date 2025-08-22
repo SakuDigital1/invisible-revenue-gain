@@ -8,9 +8,11 @@ const Footer = () => {
           
           {/* Logo and brand */}
           <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 bg-gradient-cream rounded-lg flex items-center justify-center">
-              <span className="text-pml-forest font-bold text-sm">PML</span>
-            </div>
+            <img 
+              src="/pml-logo.png" 
+              alt="Paid Media Lab Logo" 
+              className="w-8 h-8"
+            />
             <div>
               <span className="text-foreground font-semibold text-lg">
                 Paid Media Lab

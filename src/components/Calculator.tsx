@@ -88,7 +88,13 @@ const Calculator = ({ onEmailGateOpen }: CalculatorProps) => {
 
   const handleBookCall = () => {
     trackBookCallClicked('calculator');
-    const calendlyUrl = import.meta.env.VITE_CALENDLY_URL || 'https://calendly.com/paidmedialab/audit';
+    const calendlyUrl = 'https://calendly.com/saku-paidmedialab/pm-lab-tracking-clarity-call';
+    window.open(calendlyUrl, '_blank');
+  };
+
+  const handleFixTracking = () => {
+    trackBookCallClicked('fix-tracking');
+    const calendlyUrl = 'https://calendly.com/saku-paidmedialab/pm-lab-tracking-clarity-call';
     window.open(calendlyUrl, '_blank');
   };
 
@@ -276,8 +282,13 @@ const Calculator = ({ onEmailGateOpen }: CalculatorProps) => {
                       <SelectContent>
                         <SelectItem value="ecommerce">eCommerce</SelectItem>
                         <SelectItem value="saas">SaaS</SelectItem>
-                        <SelectItem value="agency">Agency‑run brand</SelectItem>
                         <SelectItem value="igaming">iGaming</SelectItem>
+                        <SelectItem value="agency">Agencies running brands</SelectItem>
+                        <SelectItem value="leadgen">Lead Gen</SelectItem>
+                        <SelectItem value="dtc">DTC / Retail</SelectItem>
+                        <SelectItem value="finance">Finance / Fintech</SelectItem>
+                        <SelectItem value="health">Health & Wellness</SelectItem>
+                        <SelectItem value="education">Education / EdTech</SelectItem>
                         <SelectItem value="other">Other</SelectItem>
                       </SelectContent>
                     </Select>
@@ -308,7 +319,14 @@ const Calculator = ({ onEmailGateOpen }: CalculatorProps) => {
                   </div>
 
                   {/* Main Result */}
-                  <div className="text-center p-8 bg-gradient-forest rounded-xl border border-pml-coral/20">
+                  <div className="text-center p-8 bg-gradient-forest rounded-xl border border-pml-coral/20 relative">
+                    <div className="absolute top-4 right-4">
+                      <img 
+                        src="/pml-logo.png" 
+                        alt="Paid Media Lab" 
+                        className="w-8 h-8 opacity-60"
+                      />
+                    </div>
                     <p className="text-foreground/80 text-sm mb-2">Estimated Invisible Revenue</p>
                     <p className="text-4xl md:text-5xl font-numeric font-bold text-pml-coral animate-count-up">
                       {formatCurrency(animatedRevenue)}
@@ -363,6 +381,15 @@ const Calculator = ({ onEmailGateOpen }: CalculatorProps) => {
                     >
                       <Calendar className="mr-2 h-4 w-4" />
                       Book a 15‑min Tracking Clarity Audit
+                    </Button>
+
+                    <Button
+                      onClick={handleFixTracking}
+                      variant="cta"
+                      size="lg"
+                      className="w-full"
+                    >
+                      ⚡ Fix My Tracking Now
                     </Button>
                   </div>
 
