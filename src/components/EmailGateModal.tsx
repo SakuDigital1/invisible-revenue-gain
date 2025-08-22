@@ -4,12 +4,22 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Loader2, Mail, FileText, CheckCircle } from 'lucide-react';
+import { Loader2, Mail, FileText, CheckCircle, AlertCircle } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
-import { submitLead } from '@/lib/api';
+import { submitLead } from '@/lib/submitLead';
+import { getCalculatorSnapshot } from '@/lib/calculatorSnapshot';
+import { getCurrentUTMs } from '@/lib/utm';
 import { trackLeadSubmitted } from '@/lib/analytics';
 import type { CalculatorInputs, CalculatorResults } from '@/lib/calc';
+import type { LeadPayload } from '@/lib/submitLead';
+
+// Extend Window interface for dataLayer
+declare global {
+  interface Window {
+    dataLayer?: any[];
+  }
+}
 
 interface EmailGateModalProps {
   isOpen: boolean;
@@ -22,47 +32,77 @@ const EmailGateModal = ({ isOpen, onClose, results, inputs }: EmailGateModalProp
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    company: '',
+    role: '',
     consent: false,
-    zapierWebhook: '',
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
   const { toast } = useToast();
+
+  // Simple email validation
+  const isValidEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError('');
     
-    if (!formData.name || !formData.email || !formData.consent) {
-      toast({
-        title: "Missing Information",
-        description: "Please fill in all fields and accept the consent.",
-        variant: "destructive",
-      });
+    // Validation
+    if (!formData.name.trim()) {
+      setError("Please enter your full name.");
+      return;
+    }
+
+    if (!formData.email.trim()) {
+      setError("Please enter your work email.");
+      return;
+    }
+
+    if (!isValidEmail(formData.email)) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+
+    if (!formData.consent) {
+      setError("Please accept the consent to receive the report.");
       return;
     }
 
     if (!results || !inputs) {
-      toast({
-        title: "Error",
-        description: "Calculator data is missing. Please try again.",
-        variant: "destructive",
-      });
+      setError("Calculator data is missing. Please try again.");
       return;
     }
 
     setIsLoading(true);
 
     try {
-      // Submit lead data
-      const result = await submitLead({
-        name: formData.name,
-        email: formData.email,
-        consent: formData.consent,
-        calculatorInputs: inputs,
-        calculatorResults: results,
-        zapierWebhook: formData.zapierWebhook,
-      });
+      // Get calculator snapshot
+      const calculatorData = getCalculatorSnapshot(inputs, results);
+      
+      // Get UTM parameters
+      const utmData = getCurrentUTMs();
+      
+      // Build payload
+      const payload: LeadPayload = {
+        full_name: formData.name.trim(),
+        work_email: formData.email.trim(),
+        company: formData.company.trim() || '',
+        role: formData.role.trim() || '',
+        ...calculatorData,
+        utm_source: utmData.utm_source || '',
+        utm_medium: utmData.utm_medium || '',
+        utm_campaign: utmData.utm_campaign || '',
+        page_url: window.location.href,
+        timestamp_iso: new Date().toISOString(),
+      };
 
-      if (result.success) {
+      // Submit to Zapier
+      const success = await submitLead(payload);
+
+      if (success) {
         // Track successful submission
         trackLeadSubmitted({
           adjGap: results.adjGap,
@@ -78,10 +118,16 @@ const EmailGateModal = ({ isOpen, onClose, results, inputs }: EmailGateModalProp
           risk: results.risk,
         }));
 
-        // Show success message
+        // Fire dataLayer event
+        if (window.dataLayer) {
+          window.dataLayer.push({ event: 'lead_submitted' });
+        }
+
+        // Close modal and show success
+        onClose();
         toast({
-          title: "Success!",
-          description: "Check your inbox for the full benchmark report.",
+          title: "Report on the way — check your inbox",
+          description: "Your hidden conversion analysis is being prepared.",
         });
 
         // Redirect to VSL page
@@ -90,24 +136,11 @@ const EmailGateModal = ({ isOpen, onClose, results, inputs }: EmailGateModalProp
         }, 1500);
 
       } else {
-        // Show error with specific messages
-        const errorMessage = result.errors.length > 0 
-          ? result.errors.join(', ')
-          : "Something went wrong. Please try again.";
-        
-        toast({
-          title: "Submission Error",
-          description: errorMessage,
-          variant: "destructive",
-        });
+        setError("Submission failed. Please try again.");
       }
     } catch (error) {
       console.error('Form submission error:', error);
-      toast({
-        title: "Error",
-        description: "Failed to submit. Please try again.",
-        variant: "destructive",
-      });
+      setError("Submission failed. Please try again.");
     } finally {
       setIsLoading(false);
     }
@@ -159,22 +192,34 @@ const EmailGateModal = ({ isOpen, onClose, results, inputs }: EmailGateModalProp
             />
           </div>
 
-          {/* Zapier Webhook Input */}
+          {/* Company Input */}
           <div className="space-y-2">
-            <Label htmlFor="zapierWebhook">
-              Zapier Webhook URL <span className="text-muted-foreground">(optional)</span>
+            <Label htmlFor="company">
+              Company <span className="text-muted-foreground">(optional)</span>
             </Label>
             <Input
-              id="zapierWebhook"
-              type="url"
-              value={formData.zapierWebhook}
-              onChange={(e) => handleInputChange('zapierWebhook', e.target.value)}
-              placeholder="https://hooks.zapier.com/hooks/catch/123456/abcdef"
+              id="company"
+              type="text"
+              value={formData.company}
+              onChange={(e) => handleInputChange('company', e.target.value)}
+              placeholder="Acme Inc"
               disabled={isLoading}
             />
-            <p className="text-xs text-muted-foreground">
-              Connect your own Zapier webhook to receive lead data in your preferred format
-            </p>
+          </div>
+
+          {/* Role Input */}
+          <div className="space-y-2">
+            <Label htmlFor="role">
+              Role <span className="text-muted-foreground">(optional)</span>
+            </Label>
+            <Input
+              id="role"
+              type="text"
+              value={formData.role}
+              onChange={(e) => handleInputChange('role', e.target.value)}
+              placeholder="Marketing Director"
+              disabled={isLoading}
+            />
           </div>
 
           {/* Consent Checkbox */}
@@ -213,13 +258,21 @@ const EmailGateModal = ({ isOpen, onClose, results, inputs }: EmailGateModalProp
             </ul>
           </div>
 
+          {/* Error Message */}
+          {error && (
+            <div className="flex items-center gap-2 text-sm text-pml-coral bg-pml-coral/10 p-3 rounded-lg">
+              <AlertCircle className="h-4 w-4 flex-shrink-0" />
+              {error}
+            </div>
+          )}
+
           {/* Submit Button */}
           <Button
             type="submit"
             variant="hero"
             size="lg"
             className="w-full"
-            disabled={isLoading || !formData.name || !formData.email || !formData.consent}
+            disabled={isLoading || !formData.name.trim() || !formData.email.trim() || !isValidEmail(formData.email) || !formData.consent}
           >
             {isLoading ? (
               <>
