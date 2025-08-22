@@ -33,10 +33,12 @@ export async function submitLead(payload: LeadPayload): Promise<boolean> {
       headers: {
         'Content-Type': 'application/json',
       },
+      mode: 'no-cors', // Required for Zapier webhooks to handle CORS
       body: JSON.stringify(payload),
     });
 
-    return response.ok && response.status >= 200 && response.status < 300;
+    // With no-cors mode, we can't read response status, so assume success if no error thrown
+    return true;
   } catch (error) {
     console.error('Error submitting lead to Zapier:', error);
     return false;
