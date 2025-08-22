@@ -2,41 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* Paid Media Lab Design System - Attribution Calculator
+All colors MUST be HSL. Executive, minimal, dark green/cream aesthetic.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core Paid Media Lab Brand Palette */
+    --pml-forest: 153 45% 19%;     /* #174D3B - primary background */
+    --pml-cream: 42 38% 88%;       /* #EFE7D5 - text on dark / panels */
+    --pml-sand: 42 27% 76%;        /* #D9CBB0 - accents, borders */
+    --pml-mint: 153 41% 74%;       /* #A6D6C3 - positive indicators */
+    --pml-coral: 6 72% 64%;        /* #E06A5F - warning/loss indicators */
+    
+    /* Semantic Design System Tokens */
+    --background: 153 45% 19%;      /* Forest background */
+    --foreground: 42 38% 88%;       /* Cream foreground */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 153 35% 22%;            /* Slightly lighter forest for cards */
+    --card-foreground: 42 38% 88%;  /* Cream text on cards */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 153 35% 22%;
+    --popover-foreground: 42 38% 88%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 42 38% 88%;          /* Cream primary */
+    --primary-foreground: 153 45% 19%; /* Forest on cream */
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 153 35% 22%;       /* Card color for secondary */
+    --secondary-foreground: 42 38% 88%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 153 25% 25%;          /* Muted forest */
+    --muted-foreground: 42 25% 70%; /* Muted cream */
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 42 27% 76%;          /* Sand accent */
+    --accent-foreground: 153 45% 19%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 6 72% 64%;      /* Coral for warnings */
+    --destructive-foreground: 42 38% 88%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --success: 153 41% 74%;        /* Mint for positive */
+    --success-foreground: 153 45% 19%;
 
-    --radius: 0.5rem;
+    --border: 153 25% 30%;         /* Subtle forest border */
+    --input: 153 25% 30%;          /* Input border */
+    --ring: 42 27% 76%;           /* Sand focus ring */
+
+    --radius: 0.75rem;            /* Slightly more rounded for premium feel */
+
+    /* Custom gradients and effects */
+    --gradient-forest: linear-gradient(135deg, hsl(153 45% 19%), hsl(153 35% 22%));
+    --gradient-cream: linear-gradient(135deg, hsl(42 38% 88%), hsl(42 27% 76%));
+    --shadow-soft: 0 10px 30px -10px hsl(153 45% 12% / 0.3);
+    --shadow-glow: 0 0 40px hsl(153 41% 74% / 0.15);
+    
+    /* Typography enhancements */
+    --font-numeric: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    
+    /* Animation timing */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 
     --sidebar-background: 0 0% 98%;
 
