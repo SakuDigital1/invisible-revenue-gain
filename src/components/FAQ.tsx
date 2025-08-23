@@ -70,7 +70,7 @@ const FAQ = () => {
             </p>
             <button
               onClick={() => {
-                const calendlyUrl = import.meta.env.VITE_CALENDLY_URL || 'https://calendly.com/paidmedialab/audit';
+                const calendlyUrl = 'https://calendly.com/saku-paidmedialab/pm-lab-tracking-clarity-call';
                 window.open(calendlyUrl, '_blank');
               }}
               className="text-pml-mint hover:text-pml-mint/80 font-semibold transition-colors"

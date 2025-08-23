@@ -28,7 +28,7 @@ const Vsl = () => {
 
   const handleBookAudit = () => {
     trackBookCallClicked('vsl');
-    const calendlyUrl = import.meta.env.VITE_CALENDLY_URL || 'https://calendly.com/paidmedialab/audit';
+    const calendlyUrl = 'https://calendly.com/saku-paidmedialab/pm-lab-tracking-clarity-call';
     window.open(calendlyUrl, '_blank');
   };
 
