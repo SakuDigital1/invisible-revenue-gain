@@ -37,7 +37,8 @@ const Vsl = () => {
     window.open(pdfUrl, '_blank');
   };
 
-  const vslUrl = import.meta.env.VITE_VSL_URL || 'https://www.loom.com/share/example';
+  // Use the specific Loom video URL with embed parameters for autoplay
+  const vslUrl = 'https://www.loom.com/embed/0db43b27453841e2816d386b2884aaea?sid=12345678-1234-1234-1234-123456789012&hideEmbedTopBar=true&autoplay=true';
 
   return (
     <div className="min-h-screen bg-gradient-forest">
@@ -96,12 +97,13 @@ const Vsl = () => {
             {/* Video embed */}
             <Card className="bg-card/10 backdrop-blur-sm border-border/20 shadow-soft">
               <CardContent className="p-6">
-                <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
+                <div className="aspect-video bg-muted rounded-lg overflow-hidden">
                   <iframe
                     src={vslUrl}
-                    className="w-full h-full rounded-lg"
+                    className="w-full h-full"
                     frameBorder="0"
                     allowFullScreen
+                    allow="autoplay; fullscreen; picture-in-picture"
                     title="Attribution Revenue Recovery Explanation"
                   ></iframe>
                 </div>
