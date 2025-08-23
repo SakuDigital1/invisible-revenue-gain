@@ -53,11 +53,13 @@ const Vsl = () => {
             <span>Back to Calculator</span>
           </a>
           
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-cream rounded-lg flex items-center justify-center">
-              <span className="text-pml-forest font-bold text-sm">PML</span>
-            </div>
-            <span className="text-foreground font-semibold">
+          <div className="flex items-center space-x-3">
+            <img 
+              src="/pml-logo.png" 
+              alt="Paid Media Lab Logo" 
+              className="w-8 h-8"
+            />
+            <span className="text-foreground font-semibold text-lg">
               Paid Media Lab
             </span>
           </div>
