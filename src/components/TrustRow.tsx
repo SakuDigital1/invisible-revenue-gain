@@ -1,7 +1,7 @@
-import metaLogo from '@/assets/meta-logo.svg';
-import googleAdsLogo from '@/assets/google-ads-logo.svg';
-import ga4Logo from '@/assets/ga4-logo.svg';
-import shopifyLogo from '@/assets/shopify-logo.svg';
+import metaLogo from '@/assets/meta-logo.png';
+import ga4Logo from '@/assets/ga4-logo.png';
+import googleAdsLogo from '@/assets/google-ads-logo.png';
+import shopifyLogo from '@/assets/shopify-logo.png';
 
 const TrustRow = () => {
   const partners = [
