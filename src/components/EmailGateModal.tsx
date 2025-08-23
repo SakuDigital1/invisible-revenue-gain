@@ -156,7 +156,7 @@ const EmailGateModal = ({ isOpen, onClose, results, inputs }: EmailGateModalProp
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <FileText className="h-5 w-5 text-pml-mint" />
-            Get Your Hidden Conversion Report
+            Get the full Benchmark Playbook by Email
           </DialogTitle>
           <DialogDescription>
             Platform breakdowns, peer benchmarks, and your 14‑day recovery plan.
@@ -282,7 +282,7 @@ const EmailGateModal = ({ isOpen, onClose, results, inputs }: EmailGateModalProp
             ) : (
               <>
                 <Mail className="mr-2 h-4 w-4" />
-                Send My Report
+                Send My Benchmark Playbook
               </>
             )}
           </Button>

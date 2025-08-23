@@ -23,8 +23,7 @@ const Hero = () => {
               </h1>
               
               <p className="text-lg md:text-xl text-foreground/80 max-w-2xl">
-                <strong>15-30% of your conversions</strong> are invisible to GA4. 
-                <br />Find yours in 60 seconds.
+                Estimate how much revenue your analytics misses each month — then see how to recover it.
               </p>
             </div>
 

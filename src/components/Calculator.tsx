@@ -327,10 +327,13 @@ const Calculator = ({ onEmailGateOpen }: CalculatorProps) => {
                         className="w-8 h-8 opacity-60"
                       />
                     </div>
-                    <p className="text-foreground/80 text-sm mb-2">Hidden Conversions Value</p>
+                    <p className="text-foreground/80 text-sm mb-2">Estimated revenue missing from attribution</p>
                     <p className="text-4xl md:text-5xl font-numeric font-bold text-pml-coral animate-count-up">
                       {formatCurrency(animatedRevenue)}
-                      <span className="text-xl">/month</span>
+                      <span className="text-xl">/mo</span>
+                    </p>
+                    <p className="text-sm text-foreground/60 mt-2">
+                      ({formatCurrency(results.recoverableLow)}–{formatCurrency(results.recoverableHigh)})
                     </p>
                   </div>
 

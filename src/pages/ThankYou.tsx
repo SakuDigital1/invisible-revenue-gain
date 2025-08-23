@@ -21,15 +21,26 @@ const ThankYou = () => {
           </div>
           
           <CardTitle className="text-3xl text-foreground mb-4">
-            Thank You!
+            Your Benchmark Playbook is on its way
           </CardTitle>
           
           <p className="text-lg text-foreground/80">
-            Your attribution benchmark report is on its way
+            We've sent your 2025 Attribution Benchmark Playbook to your inbox. It includes industry ranges, common leak patterns, and a 14-day repair framework.
           </p>
         </CardHeader>
         
         <CardContent className="space-y-8">
+          
+          {/* Calculator Results Display */}
+          <div className="text-center bg-gradient-forest rounded-lg p-6 border border-pml-coral/20">
+            <p className="text-foreground/80 text-sm mb-2">Your estimated revenue gap</p>
+            <p className="text-3xl font-numeric font-bold text-pml-coral">
+              {sessionStorage.getItem('pmlCalculatorResults') ? 
+                `$${Math.round(JSON.parse(sessionStorage.getItem('pmlCalculatorResults')!).invisibleRevenue / 1000)}K/mo` : 
+                'Calculating...'
+              }
+            </p>
+          </div>
           
           {/* What happens next */}
           <div className="bg-muted/20 rounded-lg p-6 space-y-4">
@@ -72,7 +83,7 @@ const ThankYou = () => {
           <div className="space-y-4">
             <Button
               onClick={() => {
-                const calendlyUrl = import.meta.env.VITE_CALENDLY_URL || 'https://calendly.com/paidmedialab/audit';
+                const calendlyUrl = 'https://calendly.com/saku-paidmedialab/pm-lab-tracking-clarity-call';
                 window.open(calendlyUrl, '_blank');
               }}
               variant="hero"
@@ -80,7 +91,7 @@ const ThankYou = () => {
               className="w-full"
             >
               <Calendar className="mr-2 h-4 w-4" />
-              Schedule Your 15-Min Clarity Audit
+              Book a 20-minute Tracking Clarity Audit
             </Button>
             
             <Button
