@@ -1,9 +1,14 @@
+import metaLogo from '@/assets/meta-logo.svg';
+import googleAdsLogo from '@/assets/google-ads-logo.svg';
+import ga4Logo from '@/assets/ga4-logo.svg';
+import shopifyLogo from '@/assets/shopify-logo.svg';
+
 const TrustRow = () => {
   const partners = [
-    { name: 'Meta', logo: '🔵' },
-    { name: 'GA4', logo: '📊' },
-    { name: 'Google Ads', logo: '🎯' },
-    { name: 'Shopify', logo: '🛍️' },
+    { name: 'Meta', logo: metaLogo, isImage: true },
+    { name: 'GA4', logo: ga4Logo, isImage: true },
+    { name: 'Google Ads', logo: googleAdsLogo, isImage: true },
+    { name: 'Shopify', logo: shopifyLogo, isImage: true },
     { name: 'Paid Media Lab', logo: '/pml-logo.png', isImage: true },
   ];
 
@@ -15,25 +20,21 @@ const TrustRow = () => {
             Benchmarks informed by 200+ tracking audits
           </p>
           
-          <div className="flex items-center justify-center space-x-8 md:space-x-16">
+          <div className="flex items-center justify-center gap-8 md:gap-12">
             {partners.map((partner, index) => (
               <div
                 key={partner.name}
-                className="flex flex-col items-center space-y-2 opacity-60 hover:opacity-100 transition-opacity cursor-pointer"
+                className="flex flex-col items-center space-y-3 opacity-80 hover:opacity-100 transition-opacity"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="text-2xl md:text-3xl flex items-center justify-center h-8 w-8">
-                  {partner.isImage ? (
-                    <img 
-                      src={partner.logo} 
-                      alt={partner.name}
-                      className="w-6 h-6 md:w-8 md:h-8 object-contain"
-                    />
-                  ) : (
-                    partner.logo
-                  )}
+                <div className="bg-white rounded-lg p-3 shadow-sm">
+                  <img 
+                    src={partner.logo} 
+                    alt={partner.name}
+                    className="h-9 w-auto object-contain"
+                  />
                 </div>
-                <span className="text-xs md:text-sm text-foreground/60 font-medium">
+                <span className="text-xs text-foreground/60 font-medium">
                   {partner.name}
                 </span>
               </div>
