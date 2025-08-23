@@ -33,7 +33,7 @@ const Vsl = () => {
   };
 
   const handleDownloadPDF = () => {
-    const pdfUrl = import.meta.env.VITE_BENCHMARK_PDF_URL || '/assets/2025-attribution-benchmark.pdf';
+    const pdfUrl = 'https://www.notion.so/2025-Attribution-Benchmark-Report-257d39d8410080819072c93ed9d57ba4?source=copy_link';
     window.open(pdfUrl, '_blank');
   };
 
